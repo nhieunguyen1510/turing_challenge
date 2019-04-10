@@ -16,6 +16,7 @@ import { ConnectedRouter } from 'connected-react-router/immutable';
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
+import 'styles/styles.css';
 
 // Import root app
 import App from 'containers/App';
@@ -32,13 +33,18 @@ import configureStore from './configureStore';
 // Import i18n messages
 import { translationMessages } from './i18n';
 
-// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
-// the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Open Sans', {});
+// Observe loading of Playfair Display
+const playfairDisplayObserver = new FontFaceObserver('Playfair Display', {});
+// Observe loading of Montserrat
+const montserratObserver = new FontFaceObserver('Montserrat', {});
 
-// When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
+// When Playfair Display is loaded, add a font-family using Playfair Display to the body
+playfairDisplayObserver.load().then(() => {
+  document.body.classList.add('font-playfair-display-loaded');
+});
+// When Montserrat is loaded, add a font-family using Montserrat to the body
+montserratObserver.load().then(() => {
+  document.body.classList.add('font-montserrat-loaded');
 });
 
 // Create redux store with history

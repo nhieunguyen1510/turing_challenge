@@ -4,6 +4,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const config  = require('config');
 
 // Remove this line once the following warning goes away (it was meant for webpack loader authors not users):
 // 'DeprecationWarning: loaderUtils.parseQuery() received a non-string value which can be problematic,
@@ -39,7 +40,7 @@ module.exports = options => ({
         // for a list of loaders, see https://webpack.js.org/loaders/#styling
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         // Preprocess 3rd party .css files located in node_modules
@@ -120,6 +121,7 @@ module.exports = options => ({
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        NODE_CONFIG: JSON.stringify(config),
       },
     }),
   ]),
