@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+import fontStyle from 'styles/fonts.css';
 
 const GlobalStyle = createGlobalStyle`
+${fontStyle}
+
   html,
   body {
     height: 100%;

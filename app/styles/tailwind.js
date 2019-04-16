@@ -44,6 +44,7 @@ let defaultConfig = require('tailwindcss/defaultConfig')()
 */
 
 const config = require('config');
+const R = require('ramda');
 let colors = config.get('colors');
 
 module.exports = {
@@ -111,7 +112,7 @@ module.exports = {
   */
 
   fonts: {
-    'sans': [
+    'montserrat': [
       'system-ui',
       'BlinkMacSystemFont',
       '-apple-system',
@@ -125,7 +126,7 @@ module.exports = {
       'Helvetica Neue',
       'sans-serif',
     ],
-    'serif': [
+    'playfair-display': [
       'Constantia',
       'Lucida Bright',
       'Lucidabright',
@@ -136,14 +137,6 @@ module.exports = {
       'Liberation Serif',
       'Georgia',
       'serif',
-    ],
-    'mono': [
-      'Menlo',
-      'Monaco',
-      'Consolas',
-      'Liberation Mono',
-      'Courier New',
-      'monospace',
     ],
   },
 
@@ -872,9 +865,26 @@ module.exports = {
 
   plugins: [
     require('tailwindcss/plugins/container')({
-      // center: true,
-      // padding: '1rem',
+      center: true,
     }),
+    function({ addUtilities, addComponents, e, prefix, config }) {
+      const fonts = config('fonts');
+      R.forEach(function(fontSnakeCaseName) {
+        const fontName = R.pipe(
+          R.split('-'),
+          R.map(R.pipe(
+            R.juxt([R.pipe(R.head, R.toUpper), R.tail]),
+            R.join(''),
+          )),
+          R.join(' '),
+        )(fontSnakeCaseName);
+        addUtilities({
+          ['.font-' + fontSnakeCaseName + '-loaded .' + fontSnakeCaseName]: {
+            'font-family': R.join(', ', R.concat([fontName], fonts[fontSnakeCaseName])),
+          },
+        });
+      })(R.keys(fonts));
+    },
   ],
 
 

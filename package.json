@@ -13,6 +13,7 @@
   "author": "Max Stoiber",
   "license": "MIT",
   "scripts": {
+    "postinstall": "npm run build:tailwindcss",
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
     "analyze": "node ./internals/scripts/analyze.js",
@@ -24,6 +25,7 @@
     "build:clean": "rimraf ./build",
     "build:tailwindcss": "npx tailwind build ./app/styles/tailwind.css -c ./app/styles//tailwind.js -o ./app/styles/styles.css",
     "start": "cross-env NODE_ENV=development node server",
+    "prestart": "npm run build:tailwindcss",
     "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
     "start:production": "npm run test && npm run build && npm run start:prod",
     "start:prod": "cross-env NODE_ENV=production node server",
@@ -79,6 +81,7 @@
     "lodash": "4.17.11",
     "minimist": "1.2.0",
     "prop-types": "15.6.2",
+    "ramda": "^0.26.1",
     "react": "16.6.0",
     "react-dom": "16.6.0",
     "react-helmet": "5.2.0",
