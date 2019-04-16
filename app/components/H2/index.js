@@ -1,7 +1,21 @@
-import styled from 'styled-components';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const H2 = styled.h2`
-  font-size: 1.5em;
-`;
+function H2({
+  children,
+  id,
+  className,
+}) {
+  return <h2 className="font-montserrat font-bold text-16 text-grey-dark leading-normal">{{children}}</h2>
+}
+
+H2.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array,
+  ]),
+  id: PropTypes.string,
+  className: PropTypes.string,
+};
 
 export default H2;
