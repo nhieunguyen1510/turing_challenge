@@ -5,15 +5,33 @@
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.components.Header';
+export const scope = 'turing.components.Header';
 
 export default defineMessages({
   home: {
     id: `${scope}.home`,
-    defaultMessage: 'Home',
+    defaultMessage: 'SHOPMATE',
   },
-  features: {
-    id: `${scope}.features`,
-    defaultMessage: 'Features',
-  },
+  menus: [
+    {
+      id: `${scope}.menus.women`,
+      defaultMessage: 'Women',
+    },
+    {
+      id: `${scope}.menus.men`,
+      defaultMessage: 'Men',
+    },
+    {
+      id: `${scope}.menus.kids`,
+      defaultMessage: 'Kids',
+    },
+    {
+      id: `${scope}.menus.shoes`,
+      defaultMessage: 'Shoes',
+    },
+    {
+      id: `${scope}.menus.brands`,
+      defaultMessage: 'Brands',
+    },
+  ],
 });

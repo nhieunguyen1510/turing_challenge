@@ -1,4 +1,10 @@
 {
+  "turing.components.Header.home": "SHOPMATE",
+  "turing.components.Header.menus.women": "Women",
+  "turing.components.Header.menus.men": "Men",
+  "turing.components.Header.menus.kids": "Kids",
+  "turing.components.Header.menus.shoes": "Shoes",
+  "turing.components.Header.menus.brands": "Brands",
   "boilerplate.components.Footer.author.message": "Made with love by {author}.",
   "boilerplate.components.Footer.license.message": "This project is licensed under the MIT license.",
   "boilerplate.components.Header.features": "Features",

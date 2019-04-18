@@ -24,6 +24,10 @@ ${fontStyle}
   label {
     font-family: Georgia, Times, 'Times New Roman', serif;
   }
+  
+  a {
+    text-decoration: none;
+  }
 `;
 
 export default GlobalStyle;
