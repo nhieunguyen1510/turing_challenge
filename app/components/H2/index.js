@@ -6,7 +6,7 @@ function H2({
   id,
   className,
 }) {
-  return <h2 className="font-montserrat font-bold text-16 text-grey-dark leading-normal">{{children}}</h2>
+  return <h2 className="font-montserrat font-bold text-16 text-grey-dark leading-normal">{children}</h2>
 }
 
 H2.propTypes = {

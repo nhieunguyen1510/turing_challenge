@@ -9,7 +9,7 @@ function H3({
   return <h3
     id={id}
     className={`font-montserrat font-bold text-16 text-grey-dark leading-normal ${className}`}
-  >{{children}}</h3>
+  >{children}</h3>
 }
 
 H3.propTypes = {

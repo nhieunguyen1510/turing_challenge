@@ -6,7 +6,7 @@ function H1({
   id,
   className,
 }) {
-  return <h1 className="font-playfair-display font-bold text-48 text-grey-dark leading-normal">{{children}}</h1>
+  return <h1 className="font-playfair-display font-bold text-48 text-grey-dark leading-normal">{children}</h1>
 }
 
 H1.propTypes = {
