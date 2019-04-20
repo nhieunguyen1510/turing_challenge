@@ -366,10 +366,11 @@ module.exports = {
 
   borderRadius: {
     'none': '0',
-    'sm': '.125rem',
+    // 'sm': '.125rem',
     default: '.25rem',
-    'lg': '.5rem',
-    'full': '9999px',
+    // 'lg': '.5rem',
+    // 'full': '9999px',
+    '1/2': '50%',
   },
 
 
@@ -552,6 +553,8 @@ module.exports = {
   padding: {
     'px': '1px',
     '0': '0',
+    '15': '1.5rem',
+    '18': '1.8rem',
     '25': '2.5rem',
     '50': '5rem',
   },
@@ -577,7 +580,9 @@ module.exports = {
     'auto': 'auto',
     'px': '1px',
     '0': '0',
+    '20': '2rem',
     '32': '3.2rem',
+    '1/12': '8.33333%',
   },
 
 
