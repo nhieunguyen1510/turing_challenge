@@ -8,7 +8,7 @@ function H3({
 }) {
   return <h3
     id={id}
-    className={`font-montserrat font-bold text-16 text-grey-dark leading-normal ${className}`}
+    className={`font-montserrat font-bold text-16 leading-normal ${className}`}
   >{children}</h3>
 }
 
@@ -19,6 +19,10 @@ H3.propTypes = {
   ]),
   id: PropTypes.string,
   className: PropTypes.string,
+};
+
+H3.defaultProps = {
+  className: '',
 };
 
 export default H3;

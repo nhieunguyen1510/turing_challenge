@@ -15,8 +15,6 @@ import __ from 'ramda/src/__';
 import isString from 'lodash/isString';
 import styled from 'styled-components';
 
-const checkCorrectRatioFormat = (ratio) => true;
-
 const ImgWrapper = styled.div`
   padding-top: ${prop('height')};
 `;
@@ -56,6 +54,7 @@ function Img({
   src,
   alt,
   ratio,
+  children,
 }) {
   if (ratio) {
     const {
@@ -65,6 +64,7 @@ function Img({
     
     return <ImgWrapper height={toPercentage(toFraction(ratio))} className={`relative ${wrapper}`}>
       <ImgInner src={src} className={`absolute w-full h-full pin-t ${image}`} />
+      {children}
     </ImgWrapper>;
   }
   return <img className={className} src={src} alt={alt} />;

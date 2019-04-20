@@ -6,7 +6,7 @@ function H2({
   id,
   className,
 }) {
-  return <h2 className="font-montserrat font-bold text-16 text-grey-dark leading-normal">{children}</h2>
+  return <h2 className={`font-montserrat font-bold text-24 leading-normal ${className}`}>{children}</h2>
 }
 
 H2.propTypes = {
@@ -16,6 +16,10 @@ H2.propTypes = {
   ]),
   id: PropTypes.string,
   className: PropTypes.string,
+};
+
+H2.defaultProps = {
+  className: '',
 };
 
 export default H2;

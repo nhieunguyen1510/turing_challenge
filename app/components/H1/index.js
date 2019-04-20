@@ -6,7 +6,7 @@ function H1({
   id,
   className,
 }) {
-  return <h1 className="font-playfair-display font-bold text-48 text-grey-dark leading-normal">{children}</h1>
+  return <h1 id={id} className={`font-playfair-display font-bold text-48 leading-normal ${className}`}>{children}</h1>
 }
 
 H1.propTypes = {
@@ -16,6 +16,10 @@ H1.propTypes = {
   ]),
   id: PropTypes.string,
   className: PropTypes.string,
+};
+
+H1.defaultProps = {
+  className: '',
 };
 
 export default H1;
