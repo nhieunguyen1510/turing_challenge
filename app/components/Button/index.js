@@ -11,33 +11,50 @@ import PropTypes from 'prop-types';
 
 import A from './A';
 import StyledButton from './StyledButton';
-import Wrapper from './Wrapper';
 
-function Button(props) {
-  // Render an anchor tag
-  let button = (
-    <A href={props.href} onClick={props.onClick}>
-      {Children.toArray(props.children)}
+const buttonStyles = 'font-monserrat font-bold text-15 py-15 px-50';
+
+function Button({
+  href,
+  onClick,
+  children,
+  className,
+  textColor,
+  backgroundColor,
+  size,
+}) {
+  const btnClasses = `${buttonStyles} text-${textColor} bg-${backgroundColor} ${className}`;
+  // Render an anchor tag if href exists
+  const button = href ? (
+    <A className={btnClasses} href={href} onClick={onClick}>
+      {Children.toArray(children)}
     </A>
+  ) : (
+    <StyledButton className={btnClasses} onClick={onClick}>
+      {Children.toArray(children)}
+    </StyledButton>
   );
 
-  // If the Button has a handleRoute prop, we want to render a button
-  if (props.handleRoute) {
-    button = (
-      <StyledButton onClick={props.handleRoute}>
-        {Children.toArray(props.children)}
-      </StyledButton>
-    );
-  }
-
-  return <Wrapper>{button}</Wrapper>;
+  return button;
 }
 
 Button.propTypes = {
-  handleRoute: PropTypes.func,
   href: PropTypes.string,
+  className: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
+  textColor: PropTypes.oneOf(['pink', 'white']),
+  backgroundColor: PropTypes.oneOf(['pink', 'white']),
+  size: PropTypes.oneOf(['small', 'medium', 'big']),
+};
+
+Button.defaultProps = {
+  href: '',
+  onClick: () => null,
+  className: '',
+  textColor: 'pink',
+  backgroundColor: 'pink',
+  size: 'small',
 };
 
 export default Button;
