@@ -14,6 +14,8 @@ function H3({
 
 H3.propTypes = {
   children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
     PropTypes.element,
     PropTypes.array,
   ]),

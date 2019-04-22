@@ -8,8 +8,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'invariant';
-import and from 'ramda/src/and';
+import ifElse from 'ramda/src/ifElse';
+import propEq from 'ramda/src/propEq';
+import pipe from 'ramda/src/pipe';
 import prop from 'ramda/src/prop';
+import concat from 'ramda/src/concat';
 import includes from 'ramda/src/includes';
 import __ from 'ramda/src/__';
 import isString from 'lodash/isString';
@@ -49,13 +52,28 @@ const toFraction = (ratio) => {
   return 1;
 }
 
+const addProductImgPrefix = ifElse(
+  propEq('isProductSrc', true),
+  pipe(
+    prop('src'),
+    concat('https://backendapi.turing.com/images/products/', __)
+  ),
+  prop('src'),
+);
+
 function Img({
   className,
   src,
   alt,
   ratio,
   children,
+  isProductSrc,
 }) {
+  const imgSrc = addProductImgPrefix({
+    isProductSrc,
+    src,
+  });
+  
   if (ratio) {
     const {
       wrapper = '',
@@ -63,11 +81,11 @@ function Img({
     } = className;
     
     return <ImgWrapper height={toPercentage(toFraction(ratio))} className={`relative ${wrapper}`}>
-      <ImgInner src={src} className={`absolute w-full h-full pin-t ${image}`} />
+      <ImgInner src={imgSrc} className={`absolute w-full h-full pin-t ${image}`} />
       {children}
     </ImgWrapper>;
   }
-  return <img className={className} src={src} alt={alt} />;
+  return <img className={className} src={imgSrc} alt={alt} />;
 }
 
 Img.propTypes = {
@@ -85,10 +103,13 @@ Img.propTypes = {
     PropTypes.element,
     PropTypes.array,
   ]),
+  isProductSrc: PropTypes.bool,
 };
 
 Img.defaultProps = {
   className: '',
+  alt: '',
+  isProductSrc: false,
 }
 
 export default Img;

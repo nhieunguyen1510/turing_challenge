@@ -22,7 +22,7 @@ const Number = styled.div`
 class Header extends React.Component {
   render() {
     const cartItemQuantity = 6;
-    
+
     return (
       <header>
         <div className="container flex items-center py-18">

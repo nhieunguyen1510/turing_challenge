@@ -14,6 +14,7 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import Banner from './Banner';
+import FirstProduct from './FirstProduct.Loadable';
 import { makeSelectProduct, makeSelectLoading } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -21,6 +22,8 @@ import saga from './saga';
 export class HomePage extends React.PureComponent {
 
   render() {
+    const { product } = this.props;
+    
     return (
       <article>
         <Helmet>
@@ -31,6 +34,7 @@ export class HomePage extends React.PureComponent {
           />
         </Helmet>
         <Banner />
+        <FirstProduct product={product} />
       </article>
     );
   }
@@ -38,7 +42,7 @@ export class HomePage extends React.PureComponent {
 
 HomePage.propTypes = {
   loading: PropTypes.bool,
-  product: PropTypes.oneOfType([PropTypes.object, PropTypes.oneOf([null])]),
+  ...FirstProduct.propTypes,
 };
 
 const mapStateToProps = createStructuredSelector({
