@@ -13,10 +13,10 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
+import Header from 'components/Header/Loadable';
+import Footer from 'components/Footer/Loadable';
 
-import GlobalStyle from '../../global-styles';
+import GlobalStyle from 'styles/global-styles';
 
 export default function App() {
   return (
@@ -27,6 +27,7 @@ export default function App() {
       >
         <meta name="description" content="A Turing e-commerce application" />
       </Helmet>
+      <GlobalStyle />
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
@@ -34,7 +35,6 @@ export default function App() {
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
-      <GlobalStyle />
     </div>
   );
 }

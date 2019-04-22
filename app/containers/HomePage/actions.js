@@ -15,7 +15,7 @@
  *    }
  */
 
-import { CHANGE_USERNAME } from './constants';
+import { LOAD_PRODUCT_SUCCESS } from './constants';
 
 /**
  * Changes the input field of the form
@@ -24,9 +24,9 @@ import { CHANGE_USERNAME } from './constants';
  *
  * @return {object}    An action object with a type of CHANGE_USERNAME
  */
-export function changeUsername(name) {
+export function productLoaded(product) {
   return {
-    type: CHANGE_USERNAME,
-    name,
+    type: LOAD_PRODUCT_SUCCESS,
+    product,
   };
 }

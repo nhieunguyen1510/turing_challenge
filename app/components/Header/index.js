@@ -39,7 +39,7 @@ class Header extends React.Component {
           </div>
           <div className="w-20">
             <Img src={bagIcon} ratio={1}>
-              <Number className="absolute pin-t pin-r text-center leading-none font-semibold text-white text-16 font-montserrat bg-pink rounded-1/2 p-25">
+              <Number className="absolute pin-t pin-r text-center leading-none font-semibold text-white text-16 font-montserrat bg-pink rounded-1/2">
                 {cartItemQuantity}
               </Number>
             </Img>

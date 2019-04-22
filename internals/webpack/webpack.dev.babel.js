@@ -26,7 +26,6 @@ module.exports = require('./webpack.base.babel')({
   optimization: {
     splitChunks: {
       chunks: 'all',
-      maxSize: 10000,
     },
   },
 
